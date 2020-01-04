@@ -20,15 +20,15 @@ phases:
     - echo Build started on `date` 
     - echo Building the Docker image... 
     # update the following line with the name of your own ECR repository
-    - docker build -t $REPOSITORY_URI:latest .
+    - docker build -t dockerimages .
     # update the following line with the URI of your own ECR repository (view the Push Commands in the console)
-    - docker tag $REPOSITORY_URI:latest 
+    - docker tag 344195135476.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest 
   post_build: 
     commands: 
     - echo Build completed on `date` 
     - echo pushing to repo
     # update the following line with the URI of your own ECR repository
-    - docker push $REPOSITORY_URI:latest
+    - docker push 344195135476.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest
     - echo Writing image definitions file... 
     #- printf '[{"ImageURI":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
     - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
