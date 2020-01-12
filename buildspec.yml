@@ -1,0 +1,26 @@
+version: 0.2
+phases: 
+  pre_build: 
+    commands: 
+    - echo Logging in to Amazon ECR.... 
+    - aws --version
+    # update the following line with your own region
+    - $(aws ecr get-login --no-include-email --region us-east-1)
+    - REPOSITORY_URI=344195135476.dkr.ecr.us-east-1.amazonaws.com/dockerimages 
+  build: 
+    commands: 
+    - echo Build started on `date` 
+    - echo pulling the Docker image... 
+    - docker pull 344195135476dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest
+  post_build: 
+    commands: 
+    - echo Build completed on `date` 
+    - echo pushing to repo
+    # update the following line with the URI of your own ECR repository
+    - docker push 344195135476.dkr.ecr.us-east-1.amazonaws.com/pull-push:$IMAGE_TAG
+    - echo Writing image definitions file... 
+    #- printf '[{"ImageURI":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+    - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
+artifacts:
+  files:
+    - imageDetail.json
