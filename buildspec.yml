@@ -22,7 +22,7 @@ phases:
     - echo Build completed on `date` 
     - echo pulled and pushed to repo
     # update the following line with the URI of your own ECR repository
-    - docker push 344195135476.dkr.ecr.us-east-1.amazonaws.com/dockerimages:8a2fe67
+    - docker push 344195135476.dkr.ecr.us-east-1.amazonaws.com/pull-push:latest
     - echo Writing image definitions file... 
     #- printf '[{"ImageURI":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
     - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
