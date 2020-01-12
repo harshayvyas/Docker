@@ -16,7 +16,8 @@ phases:
     - echo pulling the Docker image... 
     - pulled_image=$(docker pull 344195135476.dkr.ecr.us-east-1.amazonaws.com/dockerimages:8a2fe67)
     - echo $pulled_image
-    #- docker tag 344195135476.dkr.ecr.us-east-1.amazonaws.com/dockerimages:8a2fe67  pull-push:latest 344195135476.dkr.ecr.us-east-1.amazonaws.com/pull-push:latest
+    - docker build -t pull-push .
+    - docker tag pull-push:latest 344195135476.dkr.ecr.us-east-1.amazonaws.com/pull-push:latest
   post_build: 
     commands: 
     - echo Build completed on `date` 
