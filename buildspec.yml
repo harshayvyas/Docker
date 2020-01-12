@@ -15,7 +15,7 @@ phases:
     - echo Build started on `date` 
     - echo pulling the Docker image... 
     - docker pull 344195135476.dkr.ecr.us-east-1.amazonaws.com/dockerimages:8a2fe67
-    - docker tag codebuild:latest 344195135476.dkr.ecr.us-east-1.amazonaws.com/codebuild
+    - docker tag pull-push:latest 344195135476.dkr.ecr.us-east-1.amazonaws.com/pull-push:latest
   post_build: 
     commands: 
     - echo Build completed on `date` 
