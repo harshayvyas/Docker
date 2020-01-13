@@ -1,6 +1,3 @@
 #This is a sample Image 
-FROM ubuntu 
-
-RUN apt-get update 
-RUN apt-get install -y nginx 
+FROM python: 3.7 
 CMD [“echo”,”Image created”] 
